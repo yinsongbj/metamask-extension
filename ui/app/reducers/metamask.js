@@ -1,5 +1,6 @@
 const extend = require('xtend')
 const actions = require('../actions')
+const MetamascaraPlatform = require('../../../app/scripts/platforms/window')
 
 module.exports = reduceMetamask
 
@@ -10,6 +11,7 @@ function reduceMetamask (state, action) {
   var metamaskState = extend({
     isInitialized: false,
     isUnlocked: false,
+    isMascara: window.platform instanceof MetamascaraPlatform,
     rpcTarget: 'https://rawtestrpc.metamask.io/',
     identities: {},
     unapprovedTxs: {},
@@ -20,6 +22,7 @@ function reduceMetamask (state, action) {
     selectedTokenAddress: null,
     tokenExchangeRates: {},
     tokens: [],
+    coinOptions: {},
   }, state.metamask)
 
   switch (action.type) {
@@ -139,7 +142,7 @@ function reduceMetamask (state, action) {
       })
 
     case actions.UPDATE_TOKEN_EXCHANGE_RATE:
-    const { payload: { pair, marketinfo } } = action
+      const { payload: { pair, marketinfo } } = action
       return extend(metamaskState, {
         tokenExchangeRates: {
           ...metamaskState.tokenExchangeRates,
@@ -150,6 +153,25 @@ function reduceMetamask (state, action) {
     case actions.UPDATE_TOKENS:
       return extend(metamaskState, {
         tokens: action.newTokens,
+      })
+
+    case actions.PAIR_UPDATE:
+      const { value: { marketinfo: pairMarketInfo } } = action
+      return extend(metamaskState, {
+        tokenExchangeRates: {
+          ...metamaskState.tokenExchangeRates,
+          [pairMarketInfo.pair]: pairMarketInfo,
+        },
+      })
+
+    case actions.SHAPESHIFT_SUBVIEW:
+      const { value: { marketinfo: tokenMarketInfo, coinOptions } } = action
+      return extend(metamaskState, {
+        tokenExchangeRates: {
+          ...metamaskState.tokenExchangeRates,
+          [marketinfo.pair]: tokenMarketInfo,
+        },
+        coinOptions,
       })
 
     default:
