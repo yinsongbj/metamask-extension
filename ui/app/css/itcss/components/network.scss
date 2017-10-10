@@ -1,7 +1,17 @@
+.network-component.pointer {
+  border: 1px solid $shark;
+  border-radius: 82px;
+  padding: 4px 8px;
+}
+
 .network-indicator {
   display: flex;
   align-items: center;
   font-size: .6em;
+
+  .fa-caret-down {
+
+  }
 }
 
 .network-name {
@@ -46,29 +56,29 @@
   margin: 0;
 }
 
-.menu-icon-circle, .menu-icon-circle--active {
-  height: 23px;
-  width: 23px;
-  margin: 9px;
+.menu-icon-circle,
+.menu-icon-circle--active {
+  height: 12px;
+  width: 12px;
   background: none;
   border-radius: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid transparent;
-  background: none;
 }
 
 .menu-icon-circle--active {
-  border: 1px solid white;
-  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid $white;
+  background: rgba(100, 100, 100, .4);
 }
 
-.menu-icon-circle div, .menu-icon-circle--active div {
-  height: 17px;
-  width: 17px;
+.menu-icon-circle div,
+.menu-icon-circle--active div {
+  height: 12px;
+  width: 12px;
   border-radius: 17px;
-  opacity: 0.7;
+  opacity: .7;
 }
 
 .menu-icon-circle--active div {

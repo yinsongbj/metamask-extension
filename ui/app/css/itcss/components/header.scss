@@ -45,9 +45,10 @@
 }
 
 .app-header h1 {
-  font-family: 'Montserrat Regular';
+  font-family: Roboto;
   text-transform: uppercase;
-  color: #22232c; // $shark
+  font-size: 16px;
+  line-height: 21px;
 }
 
 h2.page-subtitle {

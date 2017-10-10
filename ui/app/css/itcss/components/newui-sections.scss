@@ -20,6 +20,11 @@ $wallet-view-bg: $wild-sand;
   display: none;
 }
 
+@media screen and (min-width: 576px) {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 // tx view
 
 .tx-view {
