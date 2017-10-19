@@ -152,7 +152,6 @@ function reduceMetamask (state, action) {
         conversionDate: action.value.conversionDate,
       })
 
-<<<<<<< HEAD
     case actions.UPDATE_TOKEN_EXCHANGE_RATE:
     const { payload: { pair, marketinfo } } = action
       return extend(metamaskState, {
@@ -240,7 +239,7 @@ function reduceMetamask (state, action) {
           errors: {
             ...metamaskState.send.errors,
             ...action.value,
-          }
+          },
         },
       })
     case actions.PAIR_UPDATE:
@@ -253,11 +252,11 @@ function reduceMetamask (state, action) {
       })
 
     case actions.SHAPESHIFT_SUBVIEW:
-      const { value: { marketinfo, coinOptions } } = action
+      const { value: { marketinfo: svMarketInfo, coinOptions } } = action
       return extend(metamaskState, {
         tokenExchangeRates: {
           ...metamaskState.tokenExchangeRates,
-          [marketinfo.pair]: marketinfo,
+          [svMarketInfo.pair]: svMarketInfo,
         },
         coinOptions,
       })
