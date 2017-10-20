@@ -191,7 +191,7 @@
     "mocha-eslint": "^4.0.0",
     "mocha-jsdom": "^1.1.0",
     "mocha-sinon": "^2.0.0",
-    "nock": "^9.0.14",
+    "nock": "^9.0.23",
     "nyc": "^11.0.3",
     "open": "0.0.5",
     "prompt": "^1.0.0",
